@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Simple UI</title>
+<link rel="stylesheet" type="text/css" href = "/webjars/bootstrap/css/bootstrap.min.css">
+<script type="text/javascript" src="webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="webjars/bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+<body ng-app="app" ng-controller="home as home"><!-- home은 컨트롤러의 이름이고, as home은 referer -->
+<h1>Demo</h1>
+<p>ID:{{home.greeting.id}}</p>
+<p>Message:{{home.greeting.msg}}</p>
+<script type="text/javascript" src="/webjars/angularjs/angular.min.js"></script>
+<script type="text/javascript">
+angular.module("app",[]).controller("home", function($http) {
+	var self = this;
+	$http.get("/greeting").then(function(response) {
+		self.greeting = response.data;
+	
+		
+	})
+})
+</script>
+
+</body>
+</html>
